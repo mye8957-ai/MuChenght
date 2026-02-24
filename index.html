@@ -34,7 +34,7 @@
   }
 
   .header {
-    padding: 28px 40px 20px;
+    padding: 22px 40px 18px;
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 14px;
   }
@@ -46,18 +46,55 @@
   }
 
   .header h1 {
-    font-size: 18px; font-weight: 700;
+    font-size: 17px; font-weight: 700;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  .header-sub { margin-left: auto; font-size: 12px; color: var(--text2); }
+  .header-right { margin-left: auto; font-size: 12px; color: var(--text2); }
 
-  .container { max-width: 1000px; margin: 0 auto; padding: 28px 20px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 24px 20px; }
+
+  /* Token 输入区 */
+  .token-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .token-label {
+    font-size: 12px; color: var(--text2);
+    white-space: nowrap; font-weight: 500;
+  }
+
+  .token-input {
+    flex: 1; min-width: 200px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 14px;
+    color: var(--text); font-family: monospace; font-size: 12px;
+    outline: none; transition: border-color 0.2s;
+  }
+
+  .token-input:focus { border-color: var(--accent); }
+  .token-input::placeholder { color: var(--text2); font-family: 'Noto Sans SC', sans-serif; }
+
+  .token-status {
+    font-size: 11px; padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .token-status.ok { background: rgba(16,185,129,0.15); color: var(--success); }
+  .token-status.fail { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .token-status.empty { background: rgba(136,136,168,0.1); color: var(--text2); }
 
   .stats {
     display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 10px; margin-bottom: 24px;
+    gap: 10px; margin-bottom: 22px;
   }
 
   .stat-card {
@@ -74,29 +111,29 @@
 
   .actions {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; padding: 20px; margin-bottom: 20px;
+    border-radius: 14px; padding: 18px; margin-bottom: 18px;
   }
 
   .actions-title {
     font-size: 11px; font-weight: 500; color: var(--text2);
-    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;
   }
 
   .form-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
-  input, select {
+  input[type=text], select {
     background: var(--surface2); border: 1px solid var(--border);
     border-radius: 8px; padding: 9px 12px; color: var(--text);
     font-family: inherit; font-size: 13px; outline: none; transition: border-color 0.2s;
   }
 
-  input:focus, select:focus { border-color: var(--accent); }
-  input::placeholder { color: var(--text2); }
+  input[type=text]:focus, select:focus { border-color: var(--accent); }
+  input[type=text]::placeholder { color: var(--text2); }
   .input-key { flex: 1; min-width: 160px; font-family: monospace; }
   select { cursor: pointer; }
 
   .btn {
-    padding: 9px 16px; border-radius: 8px; border: none;
+    padding: 9px 15px; border-radius: 8px; border: none;
     font-family: inherit; font-size: 13px; font-weight: 500;
     cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
@@ -109,6 +146,449 @@
   .btn-ghost { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+  .search-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .search-input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 9px 14px; color: var(--text);
+    font-family: inherit; font-size: 13px; outline: none;
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--text2); }
+
+  .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .list-title { font-size: 11px; font-weight: 500; color: var(--text2); letter-spacing: 0.08em; text-transform: uppercase; }
+  .list-count { font-size: 12px; color: var(--text2); }
+
+  .table-head {
+    display: grid;
+    grid-template-columns: 2fr 0.8fr 0.6fr 0.5fr 1.2fr 1.8fr;
+    gap: 8px; padding: 8px 14px;
+    font-size: 11px; color: var(--text2);
+    letter-spacing: 0.05em; text-transform: uppercase;
+    border-bottom: 1px solid var(--border); margin-bottom: 6px;
+  }
+
+  .key-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .key-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px;
+    display: grid;
+    grid-template-columns: 2fr 0.8fr 0.6fr 0.5fr 1.2fr 1.8fr;
+    gap: 8px; align-items: center;
+    animation: fadeIn 0.25s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .key-item.banned { border-left: 3px solid var(--danger); opacity: 0.7; }
+  .key-item.expired { border-left: 3px solid var(--warning); opacity: 0.7; }
+  .key-item.active { border-left: 3px solid var(--success); }
+
+  .key-text {
+    font-family: monospace; font-size: 13px; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .key-expire { font-size: 12px; color: var(--text2); }
+
+  .key-status {
+    padding: 2px 7px; border-radius: 20px;
+    font-size: 11px; font-weight: 500; white-space: nowrap; width: fit-content;
+  }
+
+  .status-active { background: rgba(16,185,129,0.15); color: var(--success); }
+  .status-banned { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .status-expired { background: rgba(245,158,11,0.15); color: var(--warning); }
+
+  .blue-col { display: flex; align-items: center; justify-content: center; }
+  .blue-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    font-size: 11px; color: white;
+  }
+  .no-badge { color: var(--text2); font-size: 12px; }
+
+  .time-col { display: flex; align-items: center; gap: 3px; }
+  .btn-time {
+    width: 26px; height: 24px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface2); color: var(--text); font-size: 11px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .btn-time:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-time:active { transform: scale(0.9); }
+
+  .key-actions { display: flex; gap: 4px; flex-wrap: wrap; }
+
+  .btn-sm {
+    padding: 4px 8px; border-radius: 6px; border: none;
+    font-family: inherit; font-size: 11px; font-weight: 500;
+    cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  }
+  .btn-sm:active { transform: scale(0.94); }
+  .btn-ban { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .btn-ban:hover { background: rgba(239,68,68,0.25); }
+  .btn-unban { background: rgba(16,185,129,0.15); color: var(--success); }
+  .btn-unban:hover { background: rgba(16,185,129,0.25); }
+  .btn-del { background: rgba(239,68,68,0.1); color: #f87171; }
+  .btn-del:hover { background: rgba(239,68,68,0.22); }
+  .btn-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .btn-blue:hover { background: rgba(59,130,246,0.25); }
+  .btn-unblue { background: rgba(107,114,128,0.15); color: #9ca3af; }
+  .btn-unblue:hover { background: rgba(107,114,128,0.25); }
+
+  .empty { text-align: center; padding: 40px; color: var(--text2); font-size: 13px; }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 18px;
+    font-size: 13px; color: var(--text);
+    opacity: 0; transition: all 0.3s; z-index: 999; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.success { border-color: var(--success); color: var(--success); }
+  .toast.error { border-color: var(--danger); color: var(--danger); }
+
+  @media (max-width: 700px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .header { padding: 14px 16px; }
+    .container { padding: 14px 12px; }
+    .table-head { display: none; }
+    .key-item { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; align-items: stretch; }
+    .token-bar { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-dot"></div>
+  <h1>沐辰 · 卡密管理</h1>
+  <span class="header-right" id="sync-status">—</span>
+</div>
+
+<div class="container">
+
+  <!-- Token 输入区 -->
+  <div class="token-bar">
+    <span class="token-label">GitHub Token</span>
+    <input class="token-input" id="token-input" type="password" placeholder="输入你的 GitHub Personal Access Token..." />
+    <span class="token-status empty" id="token-status">未连接</span>
+    <button class="btn btn-primary" onclick="connectToken()">连接</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card total"><div class="stat-num" id="s-total">—</div><div class="stat-label">总卡密</div></div>
+    <div class="stat-card active"><div class="stat-num" id="s-active">—</div><div class="stat-label">有效</div></div>
+    <div class="stat-card banned"><div class="stat-num" id="s-banned">—</div><div class="stat-label">封禁</div></div>
+    <div class="stat-card expired"><div class="stat-num" id="s-expired">—</div><div class="stat-label">过期</div></div>
+  </div>
+
+  <div class="actions">
+    <div class="actions-title">添加卡密</div>
+    <div class="form-row">
+      <input type="text" class="input-key" id="new-key" placeholder="输入卡密内容..." />
+      <select id="new-type">
+        <option value="day">天卡 (1天)</option>
+        <option value="week">周卡 (7天)</option>
+        <option value="month" selected>月卡 (30天)</option>
+        <option value="forever">永久卡</option>
+      </select>
+      <button class="btn btn-random" onclick="genRandom()">🎲 随机生成</button>
+      <button class="btn btn-primary" onclick="addKey()">+ 添加</button>
+    </div>
+  </div>
+
+  <div class="search-row">
+    <input class="search-input" id="search" placeholder="搜索卡密..." oninput="renderList()" />
+    <button class="btn btn-ghost" onclick="loadKeys()">↻ 刷新</button>
+  </div>
+
+  <div class="list-header">
+    <span class="list-title">卡密列表</span>
+    <span class="list-count" id="list-count"></span>
+  </div>
+
+  <div class="table-head">
+    <span>卡密</span>
+    <span>到期时间</span>
+    <span>状态</span>
+    <span style="text-align:center">蓝标</span>
+    <span>调整时间</span>
+    <span>操作</span>
+  </div>
+
+  <div class="key-list" id="key-list">
+    <div class="empty">请先输入 Token 并点击连接</div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const OWNER = 'mye8957-ai';
+const REPO = 'MuChengjs';
+const FILE_PATH = 'keys.json';
+const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`;
+
+let GITHUB_TOKEN = '';
+let keys = [];
+let fileSha = '';
+
+// 页面加载时读取保存的token
+window.onload = function() {
+  const saved = localStorage.getItem('mc_token');
+  if (saved) {
+    document.getElementById('token-input').value = saved;
+    GITHUB_TOKEN = saved;
+    connectToken();
+  }
+  document.getElementById('token-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') connectToken();
+  });
+};
+
+function connectToken() {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) { toast('请输入 Token', 'error'); return; }
+  GITHUB_TOKEN = t;
+  localStorage.setItem('mc_token', t);
+  loadKeys();
+}
+
+// ===== GitHub API =====
+async function loadKeys() {
+  if (!GITHUB_TOKEN) { toast('请先输入 Token', 'error'); return; }
+  setStatus('同步中...');
+  try {
+    const res = await fetch(API, {
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (res.status === 401) {
+      setTokenStatus('fail', 'Token 无效');
+      toast('Token 无效或已过期', 'error');
+      return;
+    }
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    fileSha = data.sha;
+    const content = atob(data.content.replace(/\n/g, ''));
+    const json = JSON.parse(content);
+    keys = json.keys || [];
+    setTokenStatus('ok', '已连接');
+    renderList();
+    updateStats();
+    setStatus('上次同步 ' + new Date().toLocaleTimeString());
+  } catch(e) {
+    setStatus('加载失败');
+    setTokenStatus('fail', '连接失败');
+    toast('加载失败: ' + e.message, 'error');
+  }
+}
+
+async function saveKeys() {
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify({ keys }, null, 2))));
+  try {
+    const res = await fetch(API, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: '更新卡密', content, sha: fileSha })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    fileSha = data.content.sha;
+    toast('保存成功', 'success');
+    setStatus('上次同步 ' + new Date().toLocaleTimeString());
+  } catch(e) {
+    toast('保存失败: ' + e.message, 'error');
+  }
+}
+
+// ===== 工具 =====
+function getExpireByType(type) {
+  const d = new Date();
+  if (type === 'day') d.setDate(d.getDate() + 1);
+  else if (type === 'week') d.setDate(d.getDate() + 7);
+  else if (type === 'month') d.setDate(d.getDate() + 30);
+  else if (type === 'forever') return '9999-12-31';
+  return d.toISOString().split('T')[0];
+}
+
+function isExpired(expire) {
+  if (expire === '9999-12-31') return false;
+  return new Date(expire) < new Date();
+}
+
+function getStatus(k) {
+  if (k.banned) return 'banned';
+  if (isExpired(k.expire)) return 'expired';
+  return 'active';
+}
+
+function addDays(expire, days) {
+  const base = (expire === '9999-12-31') ? new Date() : new Date(expire);
+  base.setDate(base.getDate() + days);
+  return base.toISOString().split('T')[0];
+}
+
+function genRandom() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+  let result = 'MC-';
+  for (let i = 0; i < 12; i++) {
+    if (i === 4 || i === 8) result += '-';
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  document.getElementById('new-key').value = result;
+}
+
+// ===== 操作 =====
+function addKey() {
+  if (!GITHUB_TOKEN) { toast('请先连接 Token', 'error'); return; }
+  const key = document.getElementById('new-key').value.trim();
+  const type = document.getElementById('new-type').value;
+  if (!key) return toast('请输入卡密内容', 'error');
+  if (keys.find(k => k.key === key)) return toast('卡密已存在', 'error');
+  keys.push({
+    key, expire: getExpireByType(type),
+    banned: false, blue: false,
+    created: new Date().toISOString().split('T')[0]
+  });
+  document.getElementById('new-key').value = '';
+  renderList(); updateStats(); saveKeys();
+}
+
+function banKey(key) {
+  const k = keys.find(k => k.key === key);
+  if (k) { k.banned = true; renderList(); updateStats(); saveKeys(); }
+}
+
+function unbanKey(key) {
+  const k = keys.find(k => k.key === key);
+  if (k) { k.banned = false; renderList(); updateStats(); saveKeys(); }
+}
+
+function deleteKey(key) {
+  if (!confirm('确认删除卡密 ' + key + '？')) return;
+  keys = keys.filter(k => k.key !== key);
+  renderList(); updateStats(); saveKeys();
+}
+
+function giveBlue(key) {
+  const k = keys.find(k => k.key === key);
+  if (k) { k.blue = true; renderList(); saveKeys(); toast('已给予蓝标', 'success'); }
+}
+
+function removeBlue(key) {
+  const k = keys.find(k => k.key === key);
+  if (k) { k.blue = false; renderList(); saveKeys(); toast('已撤销蓝标', 'success'); }
+}
+
+function adjustTime(key, days) {
+  const k = keys.find(k => k.key === key);
+  if (!k) return;
+  if (k.expire === '9999-12-31' && days > 0) { toast('永久卡无需加时', 'error'); return; }
+  const newExpire = addDays(k.expire, days);
+  const today = new Date().toISOString().split('T')[0];
+  if (newExpire < today) { toast('时间不能早于今天', 'error'); return; }
+  k.expire = newExpire;
+  renderList(); updateStats(); saveKeys();
+  toast((days > 0 ? '+' : '') + days + '天', 'success');
+}
+
+// ===== 渲染 =====
+function renderList() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const filtered = keys.filter(k => k.key.toLowerCase().includes(search));
+  const list = document.getElementById('key-list');
+  document.getElementById('list-count').textContent = filtered.length + ' 条';
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty">暂无卡密</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(k => {
+    const st = getStatus(k);
+    const stLabel = { active: '有效', banned: '封禁', expired: '过期' }[st];
+    const stClass = { active: 'status-active', banned: 'status-banned', expired: 'status-expired' }[st];
+    const expireLabel = k.expire === '9999-12-31' ? '永久' : k.expire;
+    const banBtn = k.banned
+      ? `<button class="btn-sm btn-unban" onclick="unbanKey('${k.key}')">解禁</button>`
+      : `<button class="btn-sm btn-ban" onclick="banKey('${k.key}')">封禁</button>`;
+    const blueBtn = k.blue
+      ? `<button class="btn-sm btn-unblue" onclick="removeBlue('${k.key}')">撤销蓝标</button>`
+      : `<button class="btn-sm btn-blue" onclick="giveBlue('${k.key}')">给予蓝标</button>`;
+    const blueIcon = k.blue
+      ? `<span class="blue-badge">✓</span>`
+      : `<span class="no-badge">—</span>`;
+
+    return `
+      <div class="key-item ${st}">
+        <span class="key-text" title="${k.key}">${k.key}</span>
+        <span class="key-expire">${expireLabel}</span>
+        <span class="key-status ${stClass}">${stLabel}</span>
+        <div class="blue-col">${blueIcon}</div>
+        <div class="time-col">
+          <button class="btn-time" onclick="adjustTime('${k.key}',-7)" title="减7天">−7</button>
+          <button class="btn-time" onclick="adjustTime('${k.key}',-1)" title="减1天">−1</button>
+          <button class="btn-time" onclick="adjustTime('${k.key}',1)" title="加1天">+1</button>
+          <button class="btn-time" onclick="adjustTime('${k.key}',7)" title="加7天">+7</button>
+        </div>
+        <div class="key-actions">
+          ${banBtn}
+          ${blueBtn}
+          <button class="btn-sm btn-del" onclick="deleteKey('${k.key}')">删除</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function updateStats() {
+  const total = keys.length;
+  const banned = keys.filter(k => k.banned).length;
+  const expired = keys.filter(k => !k.banned && isExpired(k.expire)).length;
+  const active = total - banned - expired;
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-active').textContent = active;
+  document.getElementById('s-banned').textContent = banned;
+  document.getElementById('s-expired').textContent = expired;
+}
+
+function setStatus(msg) { document.getElementById('sync-status').textContent = msg; }
+
+function setTokenStatus(type, msg) {
+  const el = document.getElementById('token-status');
+  el.textContent = msg;
+  el.className = 'token-status ' + type;
+}
+
+let toastTimer;
+function toast(msg, type = '') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.className = 'toast', 2800);
+}
+</script>
+</body>
+</html>
   .search-row { display: flex; gap: 8px; margin-bottom: 14px; }
   .search-input {
     flex: 1; background: var(--surface); border: 1px solid var(--border);
